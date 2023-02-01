@@ -1,13 +1,15 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.VisualBasic;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bots.Extensions.Polling;
 
 namespace VoiceTexterBot
 {
-    internal class Bot
+    internal class Bot:BackgroundService
     {
         private ITelegramBotClient _telegramClient;
 
@@ -16,6 +18,12 @@ namespace VoiceTexterBot
             _telegramClient = telegramClient;
         }
 
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            _telegramClient.StartReceiving(HandleUpdateAsync, HandleErrorAsync, new ReceiverOptions() { AllowedUpdates = { } }, cancellationToken: stoppingToken);
+
+            Console.WriteLine("Бот запущен");
+        }
         async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             //нажатие на кнопки
@@ -27,7 +35,8 @@ namespace VoiceTexterBot
 
             if (update.Type == UpdateType.Message)
             {
-                await _telegramClient.SendTextMessageAsync(update.Message.Chat.Id, "Отправилви сообщение", cancellationToken: cancellationToken);
+                await _telegramClient.SendTextMessageAsync(update.Message.Chat.Id, text: $"Вы отправили сообщение {update.Message.Text}", cancellationToken: cancellationToken);
+                Console.WriteLine($"Получено сообщение {update.Message.Text}");
                 return;
             }
         }
@@ -47,6 +56,5 @@ namespace VoiceTexterBot
 
             return Task.CompletedTask;
         }
-
     }
 }
