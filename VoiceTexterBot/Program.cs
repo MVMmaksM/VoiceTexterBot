@@ -42,8 +42,14 @@ namespace VoiceTexterBot
         }
 
         static AppSettings BuildAppSettings() 
-        {
-            return new AppSettings() { BotToken = "6141760219:AAF_-GomYmE8cvT7gszjmDPT7RKGCwKxEHc" };
+        {         
+            return new AppSettings()
+            {
+                DownloadsFolder = "C:\\Users\\evmor\\Downloads",
+                BotToken = "6141760219:AAF_-GomYmE8cvT7gszjmDPT7RKGCwKxEHc",
+                AudioFileName = "audio",
+                InputAudioFormat = "ogg",
+            };
         }
     }
 }
