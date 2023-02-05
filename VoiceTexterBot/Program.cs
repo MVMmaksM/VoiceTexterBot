@@ -43,7 +43,7 @@ namespace VoiceTexterBot
         }
 
         static AppSettings BuildAppSettings() 
-        {         
+        {
             return new AppSettings()
             {
                 DownloadsFolder = "C:\\Users\\Maks\\Downloads",
@@ -51,6 +51,7 @@ namespace VoiceTexterBot
                 AudioFileName = "audio",
                 InputAudioFormat = "ogg",
                 OutputAudioFormat = "wav",
+                InputAudioBitrate = 44100,
             };
         }
     }
