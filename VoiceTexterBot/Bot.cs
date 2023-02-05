@@ -10,8 +10,8 @@ using VoiceTexterBot.Controllers;
 
 namespace VoiceTexterBot
 {
-    internal class Bot:BackgroundService
-    {     
+    internal class Bot : BackgroundService
+    {
         // Клиент к Telegram Bot API
         private ITelegramBotClient _telegramClient;
 
@@ -21,12 +21,7 @@ namespace VoiceTexterBot
         private VoiceMessageController _voiceMessageController;
         private DefaultMessageController _defaultMessageController;
 
-        public Bot(
-            ITelegramBotClient telegramClient,
-            InlineKeyboardController inlineKeyboardController,
-            TextMessageController textMessageController,
-            VoiceMessageController voiceMessageController,
-            DefaultMessageController defaultMessageController)
+        public Bot(ITelegramBotClient telegramClient, InlineKeyboardController inlineKeyboardController, TextMessageController textMessageController, VoiceMessageController voiceMessageController, DefaultMessageController defaultMessageController)
         {
             _telegramClient = telegramClient;
             _inlineKeyboardController = inlineKeyboardController;
@@ -73,7 +68,7 @@ namespace VoiceTexterBot
             }
         }
 
-        Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken) 
+        Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             var errorMessage = exception switch
             {
