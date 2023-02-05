@@ -46,7 +46,7 @@ namespace VoiceTexterBot
         {         
             return new AppSettings()
             {
-                DownloadsFolder = "C:\\Users\\evmor\\Downloads",
+                DownloadsFolder = "C:\\Users\\Maks\\Downloads",
                 BotToken = "6141760219:AAF_-GomYmE8cvT7gszjmDPT7RKGCwKxEHc",
                 AudioFileName = "audio",
                 InputAudioFormat = "ogg",
