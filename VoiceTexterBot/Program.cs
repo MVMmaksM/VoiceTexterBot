@@ -4,6 +4,7 @@ using System.Text;
 using Telegram.Bot;
 using Telegram.Bots.Requests;
 using VoiceTexterBot.Controllers;
+using VoiceTexterBot.Services;
 
 namespace VoiceTexterBot
 {
@@ -29,6 +30,7 @@ namespace VoiceTexterBot
             services.AddTransient<InlineKeyboardController>();
             services.AddTransient<TextMessageController>();
             services.AddTransient<VoiceMessageController>();
+            services.AddSingleton<IStorage, MemoryStorage>();
 
             services.AddHostedService<Bot>();
         }
