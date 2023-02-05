@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using VoiceTexterBot.Services;
 
 namespace VoiceTexterBot.Controllers
 {
     internal class InlineKeyboardController
     {
+        private readonly IStorage _memoryStorage;
         private readonly ITelegramBotClient _telegramBotClient;
 
-        public InlineKeyboardController(ITelegramBotClient telegramBotClient)
+        public InlineKeyboardController(ITelegramBotClient telegramBotClient, IStorage memoryStorage)
         {
+            _memoryStorage= memoryStorage;
             _telegramBotClient = telegramBotClient;
         }
 
@@ -21,7 +24,7 @@ namespace VoiceTexterBot.Controllers
         {
             Console.WriteLine($"Контроллер {GetType().Name} обнаружил нажатие на кнопку");
 
-            await _telegramBotClient.SendTextMessageAsync(callbackQuery.From.Id, $"Обнаружено нажатие на кнопку", cancellationToken: ct);
+            await _telegramBotClient.SendTextMessageAsync(callbackQuery.From.Id, $"Обнаружено нажатие на кнопку {callbackQuery.Data}", cancellationToken: ct);
         }
     }
 }
