@@ -8,11 +8,11 @@ using Telegram.Bot.Types;
 
 namespace VoiceTexterBot.Controllers
 {
-    internal class InlineKeyBoardController
+    internal class InlineKeyboardController
     {
         private readonly ITelegramBotClient _telegramBotClient;
 
-        public InlineKeyBoardController(ITelegramBotClient telegramBotClient)
+        public InlineKeyboardController(ITelegramBotClient telegramBotClient)
         {
             _telegramBotClient = telegramBotClient;
         }
