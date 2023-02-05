@@ -15,6 +15,5 @@ namespace VoiceTexterBot.Controllers
         {
             _telegramBotClient = telegramBotClient;
         }
-
     }
 }
