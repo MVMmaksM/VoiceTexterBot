@@ -50,6 +50,7 @@ namespace VoiceTexterBot
                 BotToken = "6141760219:AAF_-GomYmE8cvT7gszjmDPT7RKGCwKxEHc",
                 AudioFileName = "audio",
                 InputAudioFormat = "ogg",
+                OutputAudioFormat = "wav",
             };
         }
     }
