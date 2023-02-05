@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using VoiceTexterBot.Configuration;
 
 namespace VoiceTexterBot.Controllers
 {
@@ -14,7 +15,7 @@ namespace VoiceTexterBot.Controllers
 
         public TextMessageController(ITelegramBotClient telegramBotClient)
         {
-            _telegramBotClient = telegramBotClient;
+            _telegramBotClient = telegramBotClient;            
         }
 
         public async Task Handle(Message message, CancellationToken ct)
